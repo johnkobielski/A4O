@@ -8,7 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <!--
+    MANUAL EDITING:
+    - styles.css contains the original compressed design.
+    - custom.css contains readable overrides for logos, the A4O graph, and testimonials.
+    - Change the version number after a CSS edit so browsers do not show an old cached design.
+  -->
+  <link rel="stylesheet" href="styles.css?v=20260731-1">
+  <link rel="stylesheet" href="custom.css?v=20260731-1">
 </head>
 <body>
   <header class="site-header">
@@ -21,6 +28,7 @@
       <a href="#services">Services</a>
       <a href="#model">Our model</a>
       <a href="#opportunities">Where we help</a>
+      <a href="#testimonials">Testimonials</a>
       <a class="nav-cta" href="#connect">Start a conversation <span>↗</span></a>
     </nav>
   </header>
@@ -38,6 +46,11 @@
           <a class="button text-button" href="#model"><span class="play">↓</span> See how the model works</a>
         </div>
       </div>
+      <!--
+        A4O FOUR-PILLAR GRAPH:
+        Change the four labels or descriptions below.
+        Their layout and spacing are documented in custom.css under "A4O FOUR-PILLAR GRAPH".
+      -->
       <div class="hero-visual reveal">
         <div class="signal signal-a"><span>01</span><strong>Strategy</strong><small>Business case & roadmap</small></div>
         <div class="signal signal-b"><span>02</span><strong>Leadership</strong><small>Governance & execution</small></div>
@@ -130,6 +143,58 @@
       </div>
     </section>
 
+    <!--
+      TESTIMONIALS:
+      Each article is one rotating slide. Edit the quote, name, or role directly.
+      To add a slide, duplicate an entire <article class="testimonial-slide"> block.
+      Rotation timing is documented near TESTIMONIAL_INTERVAL_MS in script.js.
+    -->
+    <section class="testimonials section" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="testimonials-intro">
+        <p class="eyebrow"><span></span> Testimonials</p>
+        <h2 id="testimonials-title">First-hand <em>stories</em> from people we’ve worked with.</h2>
+        <p>Experienced leadership, trusted technology partners, and practical execution—measured by the difference the work makes for clients and teams.</p>
+        <div class="testimonial-kpis" aria-label="A4O experience">
+          <div><strong>25+</strong><span>years of experience</span></div>
+          <div><strong>$100M+</strong><span>programs led</span></div>
+        </div>
+      </div>
+
+      <div class="testimonial-carousel" aria-roledescription="carousel" aria-label="Client testimonials">
+        <div class="testimonial-slides" aria-live="polite">
+          <article class="testimonial-slide is-active" aria-hidden="false">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>The expertise and guidance provided by Attunement 4 Optimum transformed our approach to project management. We’re now delivering projects faster and with better results.</blockquote>
+            <footer><strong>Kamil Majewski</strong><span>Co-Founder, Gammasoft</span></footer>
+          </article>
+
+          <article class="testimonial-slide" aria-hidden="true">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>I had the privilege of working with John Kobielski and was consistently impressed by his results-driven approach and exceptional leadership abilities. With a proven track record in managing both functional and matrix organizations, John consistently demonstrated his ability to drive execution and achieve strategic objectives. He is also highly tech-savvy, applying strong analytical and decision-making skills across both technology and business.</blockquote>
+            <footer><strong>Robert Putrus, CISM, PMP, PE</strong><span>Vice President, Information Systems</span></footer>
+          </article>
+
+          <article class="testimonial-slide" aria-hidden="true">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>John is one of the exceptional managers. He had groundbreaking ideas to bring stability, efficiency, and normalcy into troubled SAP projects. He has a cool head with a clear approach and ideas to tackle any difficult situations that may arise.</blockquote>
+            <footer><strong>Seshagiri Chalicham</strong><span>ERP and Strategy Leader</span></footer>
+          </article>
+        </div>
+
+        <div class="testimonial-controls">
+          <div class="testimonial-dots" aria-label="Choose testimonial">
+            <button class="testimonial-dot is-active" type="button" aria-label="Show testimonial 1" aria-current="true"></button>
+            <button class="testimonial-dot" type="button" aria-label="Show testimonial 2" aria-current="false"></button>
+            <button class="testimonial-dot" type="button" aria-label="Show testimonial 3" aria-current="false"></button>
+          </div>
+          <div class="testimonial-arrows">
+            <button class="testimonial-prev" type="button" aria-label="Previous testimonial">←</button>
+            <button class="testimonial-next" type="button" aria-label="Next testimonial">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="source-graphic section">
       <div><p class="eyebrow"><span></span> The offering at a glance</p><h2>Your vision. Our leadership.<br><em>Technology partners. Real results.</em></h2></div>
       <button class="graphic-frame" type="button" aria-label="Open offering graphic">
@@ -138,6 +203,11 @@
       </button>
     </section>
 
+    <!--
+      COMPANY LOGOS:
+      The source files are below. Their visible sizes are controlled by the clearly named
+      logo variables at the top of custom.css.
+    -->
     <section class="company-lineage" aria-labelledby="company-lineage-title">
       <div class="lineage-copy">
         <p class="eyebrow"><span></span> Our company family</p>
@@ -173,7 +243,8 @@
   </footer>
 
   <dialog class="lightbox"><button aria-label="Close graphic">×</button><img src="assets/a4o-offering.png" alt="A4O offering overview"></dialog>
-  <script src="script.js"></script>
+  <!-- Change this version number after editing script.js to avoid cached JavaScript. -->
+  <script src="script.js?v=20260731-1"></script>
 </body>
 </html>
 
