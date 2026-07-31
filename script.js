@@ -17,11 +17,24 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const dialog = document.querySelector('.lightbox');
-document.querySelector('.graphic-frame').addEventListener('click', () => dialog.showModal());
-dialog.querySelector('button').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
-  if (event.target === dialog) dialog.close();
-});
+if (dialog) {
+  const lightboxImage = dialog.querySelector('img');
+
+  // Any .graphic-frame can open its own image in the shared full-screen viewer.
+  document.querySelectorAll('.graphic-frame').forEach(frame => {
+    frame.addEventListener('click', () => {
+      const previewImage = frame.querySelector('img');
+      lightboxImage.src = frame.dataset.lightboxSrc || previewImage?.src || '';
+      lightboxImage.alt = frame.dataset.lightboxAlt || previewImage?.alt || 'Expanded graphic';
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelector('button').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) dialog.close();
+  });
+}
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 /*
