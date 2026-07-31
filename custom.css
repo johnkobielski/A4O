@@ -699,6 +699,18 @@ footer .footer-brand small {
   font-size: 10px;
 }
 
+.assistant-basis {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #315779;
+  background: #eaf2f9;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
 .assistant-handoff {
   display: inline-flex;
   margin-top: 11px;
@@ -776,6 +788,11 @@ footer .footer-brand small {
 .assistant-footer a {
   color: var(--red);
   font-weight: 800;
+}
+
+.assistant-mode {
+  max-width: 62%;
+  line-height: 1.25;
 }
 
 /* =========================================================
