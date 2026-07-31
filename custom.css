@@ -705,6 +705,27 @@ footer .footer-brand small {
   font-style: italic;
 }
 
+.assistant-message.is-typing > p:first-child::after {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  background: var(--blue);
+  content: "";
+  vertical-align: -.12em;
+  animation: assistant-caret .72s steps(1) infinite;
+}
+
+@keyframes assistant-caret {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assistant-message.is-typing > p:first-child::after {
+    animation: none;
+  }
+}
+
 .assistant-message a {
   color: var(--blue);
   font-weight: 700;
