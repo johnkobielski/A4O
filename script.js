@@ -9,6 +9,24 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   toggle.setAttribute('aria-expanded', 'false');
 }));
 
+const floatingNav = document.querySelector('.floating-nav');
+if (floatingNav) {
+  const floatingNavToggle = floatingNav.querySelector('.floating-nav-toggle');
+  const floatingNavMenu = floatingNav.querySelector('.floating-nav-menu');
+  const floatingNavClose = floatingNav.querySelector('.floating-nav-close');
+  const setFloatingNavOpen = open => {
+    floatingNavMenu.hidden = !open;
+    floatingNavToggle.setAttribute('aria-expanded', String(open));
+  };
+  floatingNavToggle.addEventListener('click', () => setFloatingNavOpen(floatingNavToggle.getAttribute('aria-expanded') !== 'true'));
+  floatingNavClose.addEventListener('click', () => { setFloatingNavOpen(false); floatingNavToggle.focus(); });
+  floatingNavMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setFloatingNavOpen(false)));
+  document.addEventListener('click', event => { if (!floatingNav.contains(event.target)) setFloatingNavOpen(false); });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !floatingNavMenu.hidden) { setFloatingNavOpen(false); floatingNavToggle.focus(); }
+  });
+}
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -99,3 +117,4 @@ if (testimonialCarousel) {
   showSlide(0);
   startRotation();
 }
+
