@@ -148,6 +148,22 @@ A4O combines U.S. leadership and disciplined governance with right-sized special
 
 A4O focuses on adoption, not just installation, connecting technology delivery with leadership, people, process, governance, and operating change.
 
+## Optimum Attunement AI Transformation Framework (OATF/AI)
+
+The Optimum Attunement™ AI Transformation Framework, abbreviated OATF/AI, is a domain-based organizational transformation framework developed by John S. Kobielski. It establishes the conditions for AI to be adopted, governed, used, and continuously improved as a coherent organizational capability.
+
+OATF/AI begins before consequential deployment, overlaps controlled implementation and pilot learning, and continues through run-state operation, monitoring, reassessment, and adaptation.
+
+OATF/AI is delivered through a structured implementation program connecting organizational readiness, decision rights, governance, adoption, risk, assurance, and value realization.
+
+OATF/AI is not a technical development lifecycle, a compliance standard, or a quantitative decision model. It provides an organizational transformation layer that helps those disciplines work together coherently.
+
+Its organizational domains include Organizational Attunement, Technical Assurance, Risk and Safety, Legal and Regulatory, Security and Privacy, and Value and Investment.
+
+The OATF/AI framework map shows dependencies and sequencing across the program phases Prepare, Define, Validate, Decide, and Deploy and Operate. It illustrates how OATF/AI interfaces with major AI implementation frameworks, management systems, lifecycle standards, risk-management approaches, governance guidance, and the EU AI Act.
+
+The framework's path is: From Operational Attunement to Responsible AI in Operation.
+
 ## Meet the owner
 
 John S. Kobielski, PhD, MBA, is the Founder and Managing Director of Attunement 4 Optimum.
