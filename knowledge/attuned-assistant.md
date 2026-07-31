@@ -156,9 +156,9 @@ Attuned Performance. Responsible AI. Real Results.
 
 John helps organizations turn complex technology, transformation, and regulation into clear, measurable outcomes. He brings more than 25 years of experience and has led more than $100 million in programs across automotive, manufacturing, public sector, financial services, and healthcare. His work has helped companies save millions, reduce risk, and strengthen their teams.
 
-John works through the Optimum Attunement™ Transformation Framework, abbreviated OATF, applied across artificial intelligence, Agile, digital transformation, and mergers and acquisitions integration. The framework aligns business strategy with real-world execution.
+John created the Optimum Attunement™ Transformation Framework, abbreviated OATF. It is a practical approach for aligning strategy, leadership, adoption, and technology across artificial intelligence, Agile, digital transformation, and mergers and acquisitions integration.
 
-The artificial-intelligence application is the Optimum Attunement™ AI Transformation Framework, abbreviated OATF/AI. Its path is: From Operational Attunement to Responsible AI in Operation.
+John subsequently developed its artificial-intelligence application, the Optimum Attunement™ AI Transformation Framework, abbreviated OATF/AI, together with a structured implementation program that guides organizations from readiness and governance through deployment, adoption, and measurable value. Its path is: From Operational Attunement to Responsible AI in Operation.
 
 John leverages artificial intelligence, cloud platforms, and connected devices while helping organizations build attuned performance, responsible AI adoption, and leadership teams ready to operate in regulated, compliance-driven environments.
 
