@@ -59,6 +59,21 @@ A4O coordinates business architecture, requirements, specialist-partner selectio
 
 Capabilities include predictive analytics, deep learning, time-series forecasting, mathematical optimization, decision models, computer vision, image and video processing, generative AI, natural-language processing, MLOps, APIs, and production integration.
 
+## Custom LLM and generative AI solutions
+
+Yes. A4O can lead a custom large language model (LLM) or generative AI initiative, with QuantUp providing specialist AI product engineering.
+
+The confirmed capability base includes custom AI product development from discovery and proof of concept through minimum viable product, production rollout, and expansion; bespoke algorithms and solutions; natural-language processing; generative AI; APIs; cloud and scalable deployment; MLOps; and production integration.
+
+Depending on the business need and discovery findings, a solution may use a commercial or open model with private organizational knowledge, retrieval-augmented generation (RAG), model adaptation or fine-tuning, tool-using workflows, evaluation, guardrails, monitoring, and human oversight. These are solution options, not a commitment to a specific architecture before discovery.
+
+A4O defines the business case, use cases, governance, operating model, responsible-AI controls, adoption plan, and measurable outcomes. QuantUp designs, builds, tests, deploys, and integrates the technical solution. The exact model, data approach, security design, cost, timeline, and hosting architecture are confirmed during discovery.
+
+Supporting partner pages:
+
+- QuantUp AI product development: https://quantup.ai/what-we-do/ai-product-development/
+- QuantUp bespoke business-process solutions: https://quantup.ai/what-we-do/business-process-optimisation/
+
 ## Industrial AI applications
 
 A4O and its specialist partners help organizations apply AI to industrial and operational environments. Examples include computer vision, predictive quality, equipment intelligence, anomaly detection, optimization, energy management, connected operations, and AI-enabled workflows.
@@ -86,6 +101,8 @@ Website: https://quantup.ai/
 QuantUp develops AI-enabled products, improves business processes through AI and machine learning, and transfers know-how to client teams.
 
 QuantUp capabilities include predictive analytics, deep learning, time-series forecasting, mathematical optimization, decision models, computer vision, image and video processing, generative AI, natural-language processing, MLOps, APIs, and production integration.
+
+QuantUp describes end-to-end AI product development from discovery and validation through proof of concept, MVP, production rollout, and expansion. It also describes bespoke solutions, custom algorithms, natural-language processing, cloud technologies, scalable deployment, and selecting the appropriate combination of statistics, AI, machine learning, and deep learning for the need.
 
 A4O plus QuantUp: A4O aligns the organization and leads the program; QuantUp designs, builds, and deploys the AI and analytics systems.
 
@@ -153,8 +170,12 @@ Attunement 4 Optimum is a TJ Nexus Labs company. A4O brings focused enterprise t
 
 Website: https://att4opt.com/
 
-Contact email: TO BE ADDED
+Contact email: john.kobielski@att4opt.com
 
-Scheduling link: TO BE ADDED
+Scheduling link: https://calendly.com/john-kobielski-att4opt
+
+Visitors can either schedule an appointment through Calendly or contact A4O directly by email.
+
+TJ Nexus Labs website: https://tjnexuslabs.com
 
 When the assistant cannot verify an answer from approved knowledge, it should say so clearly and invite the visitor to request a conversation with A4O. It must not invent services, client relationships, prices, timelines, certifications, or commitments.
