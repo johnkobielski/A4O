@@ -1234,8 +1234,7 @@ footer .footer-brand small {
   }
 
   .floating-nav { right:168px; bottom:14px; }
-  .floating-nav-toggle { width:54px; padding:8px; }
-  .floating-nav-toggle > span:last-child { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .floating-nav-toggle { width:auto; min-width:92px; padding:8px 15px 8px 9px; }
   .floating-nav-menu { right:-154px; bottom:64px; }
 
   .assistant-panel {
