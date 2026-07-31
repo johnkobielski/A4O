@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  included_files = ["knowledge/attuned-assistant.md"]
+
+[[redirects]]
+  from = "/api/attuned-assistant"
+  to = "/.netlify/functions/attuned-assistant"
+  status = 200

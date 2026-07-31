@@ -86,4 +86,3 @@ if (testimonialCarousel) {
   showSlide(0);
   startRotation();
 }
-

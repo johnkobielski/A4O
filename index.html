@@ -14,8 +14,8 @@
     - custom.css contains readable overrides for logos, the A4O graph, and testimonials.
     - Change the version number after a CSS edit so browsers do not show an old cached design.
   -->
-  <link rel="stylesheet" href="styles.css?v=20260731-1">
-  <link rel="stylesheet" href="custom.css?v=20260731-1">
+  <link rel="stylesheet" href="styles.css?v=20260731-5">
+  <link rel="stylesheet" href="custom.css?v=20260731-5">
 </head>
 <body>
   <header class="site-header">
@@ -27,6 +27,7 @@
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
       <a href="#model">Our model</a>
+      <a href="#partners">Partners</a>
       <a href="#opportunities">Where we help</a>
       <a href="#testimonials">Testimonials</a>
       <a class="nav-cta" href="#connect">Start a conversation <span>↗</span></a>
@@ -37,6 +38,7 @@
     <section class="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="orb orb-one" aria-hidden="true"></div>
+      <div class="digital-globe" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span></span> Enterprise technology transformation</p>
         <h1>Transform your enterprise technology with <em>trusted AI and attuned delivery.</em></h1>
@@ -63,9 +65,10 @@
         </div>
         <svg viewBox="0 0 700 600" aria-hidden="true">
           <defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#ef1018"/><stop offset="1" stop-color="#0e67b4"/></linearGradient></defs>
-          <path d="M75 130 C190 40 300 80 350 290 S545 500 630 380" />
-          <path d="M100 485 C210 550 290 480 350 300 S520 60 625 145" />
-          <circle cx="75" cy="130" r="7"/><circle cx="630" cy="380" r="7"/><circle cx="100" cy="485" r="7"/><circle cx="625" cy="145" r="7"/>
+          <!-- Technology endpoint moved down; Adoption endpoint extended left. -->
+          <path d="M75 130 C190 40 300 80 350 290 S545 515 630 485" />
+          <path d="M78 485 C210 550 290 480 350 300 S520 60 625 145" />
+          <circle cx="75" cy="130" r="7"/><circle cx="630" cy="485" r="7"/><circle cx="78" cy="485" r="7"/><circle cx="625" cy="145" r="7"/>
         </svg>
       </div>
       <div class="hero-proof">
@@ -126,8 +129,80 @@
         <article><b>01</b><div><h3>AI, ML & advanced analytics</h3><p>Predictive analytics, optimization, computer vision, generative AI, MLOps, and production integration.</p></div><span>↗</span></article>
         <article><b>02</b><div><h3>Custom software engineering</h3><p>Scalable web, mobile, cloud, and enterprise applications built around real operating needs.</p></div><span>↗</span></article>
         <article><b>03</b><div><h3>Enterprise automation & ITSM</h3><p>Workflow automation, shared-service platforms, process optimization, and service management.</p></div><span>↗</span></article>
-        <article><b>04</b><div><h3>IoT & smart platforms</h3><p>Connected solutions, data integration, monitoring, and real-time operational insight.</p></div><span>↗</span></article>
+        <article><b>04</b><div><h3>IoT, smart platforms & digitalization</h3><p>Connected products, enterprise digitalization, data integration, monitoring, and real-time operational insight.</p></div><span>↗</span></article>
         <article><b>05</b><div><h3>Security & compliance by design</h3><p>Secure architecture, privacy, audit readiness, risk management, and regulatory alignment.</p></div><span>↗</span></article>
+        <article><b>06</b><div><h3>Industrial AI applications</h3><p>Computer vision, predictive quality, equipment intelligence, optimization, and AI-enabled industrial workflows.</p></div><span>↗</span></article>
+      </div>
+    </section>
+
+    <!--
+      TECHNOLOGY PARTNERS:
+      Partner capabilities below are summarized from the A4O Company Profile.
+      The organization logos are selected examples publicly displayed on the
+      respective partner websites and are not presented as direct A4O clients.
+    -->
+    <section class="partners section" id="partners" aria-labelledby="partners-title">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span></span> We partner with specialist teams</p><h2 id="partners-title">Strategy led by A4O.<br><em>Technology delivered by proven specialists.</em></h2></div>
+        <p>One coordinated model for strategy, execution, organizational adoption, and technical delivery—from business case through production operations.</p>
+      </div>
+
+      <div class="partner-grid">
+        <article class="partner-card">
+          <a class="partner-brand" href="https://quantup.ai/" target="_blank" rel="noopener" aria-label="Visit QuantUp">
+            <img src="assets/quantup-logo.svg" alt="QuantUp">
+            <span>quantup.ai ↗</span>
+          </a>
+          <p class="partner-kicker">AI & advanced analytics delivery</p>
+          <h3>Applied AI that moves from business context to production.</h3>
+          <p>QuantUp develops AI-enabled products, improves business processes through AI and machine learning, and transfers know-how to client teams.</p>
+          <ul>
+            <li>Predictive analytics and time-series forecasting</li>
+            <li>Optimization and decision models</li>
+            <li>Computer vision and industrial AI</li>
+            <li>Generative AI, NLP, MLOps, and APIs</li>
+          </ul>
+          <p class="partner-role"><strong>A4O + QuantUp:</strong> A4O aligns the organization and leads the program; QuantUp designs, builds, and deploys the AI and analytics systems.</p>
+        </article>
+
+        <article class="partner-card">
+          <a class="partner-brand" href="https://gammasoft.pl/" target="_blank" rel="noopener" aria-label="Visit GammaSoft">
+            <img src="assets/gammasoft-logo.svg" alt="GammaSoft">
+            <span>gammasoft.pl ↗</span>
+          </a>
+          <p class="partner-kicker">Enterprise software, IoT & automation</p>
+          <h3>Business-critical platforms for enterprise and public-sector operations.</h3>
+          <p>Established in 2011, GammaSoft develops software for public institutions, regulated industries, and enterprise customers.</p>
+          <ul>
+            <li>Workflow and business-process automation</li>
+            <li>IoT monitoring and smart-city platforms</li>
+            <li>Enterprise web and mobile development</li>
+            <li>Integration, modernization, and support</li>
+          </ul>
+          <p class="partner-role"><strong>A4O + GammaSoft:</strong> A4O provides client strategy, U.S. engagement, and program leadership; GammaSoft provides engineering, integration, and support.</p>
+        </article>
+      </div>
+
+      <div class="partner-experience">
+        <div class="partner-experience-copy">
+          <p class="section-label">Selected partner experience</p>
+          <h3>Organizations publicly featured by our technology partners.</h3>
+          <p>These examples demonstrate the breadth of environments in which QuantUp and GammaSoft have worked. They are shown as partner references, not as direct A4O client claims.</p>
+        </div>
+        <div class="partner-logo-grid" aria-label="Selected organizations featured on partner websites">
+          <figure><img src="assets/client-t-mobile.png" alt="T-Mobile"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-schneider-electric.png" alt="Schneider Electric"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-international-paper.png" alt="International Paper"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-credit-suisse.png" alt="Credit Suisse"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-orange.png" alt="Orange"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-allegro.png" alt="Allegro"><figcaption>via QuantUp</figcaption></figure>
+          <figure><img src="assets/client-asseco.svg" alt="Asseco"><figcaption>via GammaSoft</figcaption></figure>
+          <figure><img src="assets/client-asseco-data-systems.svg" alt="Asseco Data Systems"><figcaption>via GammaSoft</figcaption></figure>
+          <figure><img src="assets/client-it-factory.svg" alt="IT Factory"><figcaption>via GammaSoft</figcaption></figure>
+          <figure><img src="assets/client-asari.svg" alt="ASARI"><figcaption>via GammaSoft</figcaption></figure>
+          <figure><img src="assets/client-sapiens.svg" alt="Sapiens"><figcaption>via GammaSoft</figcaption></figure>
+          <figure><img src="assets/client-autoria.svg" alt="Autoria"><figcaption>via GammaSoft</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -195,6 +270,32 @@
       </div>
     </section>
 
+    <!--
+      MEET THE OWNER:
+      Replace assets/john-kobielski.png to change the portrait.
+      Keep the same filename and the site will update without editing this HTML.
+    -->
+    <section class="owner section" id="owner" aria-labelledby="owner-title">
+      <div class="owner-portrait">
+        <img src="assets/john-kobielski.png" alt="John S. Kobielski, Managing Director of Attunement 4 Optimum">
+      </div>
+      <div class="owner-copy">
+        <p class="eyebrow"><span></span> Meet the owner</p>
+        <h2 id="owner-title">John S. Kobielski,<br><em>PhD, MBA</em></h2>
+        <p class="owner-role">Founder and Managing Director · Attunement 4 Optimum</p>
+        <p>John brings more than 25 years of leadership across complex technology and transformation programs. He serves as the senior, accountable interface aligning executives, delivery teams, and specialist partners from business case through adoption and measurable value.</p>
+        <a class="button owner-button" href="#connect">Start a conversation <span>↗</span></a>
+      </div>
+      <div class="leadership-experience">
+        <p class="section-label">Leadership experience includes</p>
+        <p>Organizations where John has worked or led initiatives during his career. Display does not imply current sponsorship or endorsement.</p>
+        <div class="experience-wordmarks" aria-label="Selected organizations from John Kobielski's professional experience">
+          <span>GM</span><span>OnStar</span><span>Whirlpool</span><span>United Airlines</span>
+          <span>First Solar</span><span>Infosys</span><span>Grant Thornton</span><span>Visteon</span>
+        </div>
+      </div>
+    </section>
+
     <section class="source-graphic section">
       <div><p class="eyebrow"><span></span> The offering at a glance</p><h2>Your vision. Our leadership.<br><em>Technology partners. Real results.</em></h2></div>
       <button class="graphic-frame" type="button" aria-label="Open offering graphic">
@@ -217,7 +318,7 @@
       <div class="lineage-lockup" aria-label="Attunement 4 Optimum, a TJ Nexus Labs company">
         <img class="lineage-a4o" src="assets/a4o-logo-transparent.png" alt="Attunement 4 Optimum">
         <div class="lineage-connector"><span>A TJNL Company</span><i aria-hidden="true"></i></div>
-        <img class="lineage-tjnl" src="assets/tjnl-logo.svg" alt="TJ Nexus Labs">
+        <img class="lineage-tjnl" src="assets/tjnl-logo.jpg" alt="TJ Nexus Labs">
       </div>
     </section>
 
@@ -233,6 +334,42 @@
     </section>
   </main>
 
+  <!--
+    ATTUNED ASSISTANT:
+    Edit knowledge/attuned-assistant.md to change the information used by the assistant.
+    assistant.js first tries the secure server endpoint. Until that endpoint is configured,
+    the widget automatically runs in a local knowledge-preview mode for testing.
+  -->
+  <button class="assistant-launcher" type="button" aria-expanded="false" aria-controls="attuned-assistant">
+    <span class="assistant-launcher-icon" aria-hidden="true">A4O</span>
+    <span>Ask Attuned</span>
+  </button>
+  <aside class="assistant-panel" id="attuned-assistant" aria-label="Attuned Assistant" hidden>
+    <header class="assistant-header">
+      <div><span class="assistant-status" aria-hidden="true"></span><strong>Attuned Assistant</strong><small>Strategy · Technology · Delivery</small></div>
+      <button class="assistant-close" type="button" aria-label="Close Attuned Assistant">×</button>
+    </header>
+    <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions">
+      <article class="assistant-message assistant-message-bot">
+        <p>Hello. I can explain A4O’s services, technology capabilities, delivery model, and specialist partners. What would you like to explore?</p>
+      </article>
+    </div>
+    <div class="assistant-suggestions" aria-label="Suggested questions">
+      <button type="button">How can A4O help with industrial AI?</button>
+      <button type="button">Tell me about your technology partners.</button>
+      <button type="button">How do you move AI from pilot to operations?</button>
+    </div>
+    <form class="assistant-form">
+      <label class="sr-only" for="assistant-input">Ask Attuned Assistant</label>
+      <textarea id="assistant-input" rows="2" maxlength="600" placeholder="Ask about A4O…" required></textarea>
+      <button type="submit" aria-label="Send question">↗</button>
+    </form>
+    <footer class="assistant-footer">
+      <span>Answers use approved A4O knowledge.</span>
+      <a href="#connect">Request a conversation</a>
+    </footer>
+  </aside>
+
   <footer>
     <a class="brand official-brand footer-brand" href="#top" aria-label="Attunement 4 Optimum home">
       <img src="assets/a4o-logo-transparent.png" alt="Attunement 4 Optimum">
@@ -244,7 +381,7 @@
 
   <dialog class="lightbox"><button aria-label="Close graphic">×</button><img src="assets/a4o-offering.png" alt="A4O offering overview"></dialog>
   <!-- Change this version number after editing script.js to avoid cached JavaScript. -->
-  <script src="script.js?v=20260731-1"></script>
+  <script src="script.js?v=20260731-5"></script>
+  <script src="assistant.js?v=20260731-5"></script>
 </body>
 </html>
-
