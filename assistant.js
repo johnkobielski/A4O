@@ -8,8 +8,12 @@
 */
 
 const ATTUNED_CONFIG = {
-  endpoint: '/api/attuned-assistant',
-  knowledgePath: 'knowledge/attuned-assistant.md'
+  // GitHub Pages cannot run a secure API function. Set this global in index.html
+  // to the separately deployed Netlify endpoint when full AI mode is ready.
+  endpoint: window.ATTUNED_ASSISTANT_ENDPOINT || '/api/attuned-assistant',
+  knowledgePath: 'knowledge/attuned-assistant.md',
+  scheduleUrl: 'https://calendly.com/john-kobielski-att4opt',
+  contactEmail: 'john.kobielski@att4opt.com'
 };
 
 const FALLBACK_KNOWLEDGE = `
@@ -22,8 +26,11 @@ A4O helps organizations prioritize industrial AI use cases, build governance, co
 ## Technology partners
 QuantUp provides AI, advanced analytics, optimization, computer vision, generative AI, and production integration. GammaSoft provides enterprise software, workflow automation, IoT and smart-city platforms, integration, modernization, maintenance, and support.
 
+## Custom LLM and generative AI solutions
+A4O can lead a custom LLM or generative AI initiative, with QuantUp providing specialist AI product engineering. The capability base includes custom AI product development, bespoke algorithms and solutions, natural-language processing, generative AI, APIs, scalable deployment, MLOps, and production integration. The exact architecture is confirmed during discovery.
+
 ## Contact
-Use the Request a conversation link to connect with John S. Kobielski, PhD, MBA, Managing Director of A4O.
+Schedule an appointment with John S. Kobielski, PhD, MBA, at https://calendly.com/john-kobielski-att4opt or email john.kobielski@att4opt.com.
 `;
 
 const launcher = document.querySelector('.assistant-launcher');
@@ -33,9 +40,17 @@ const form = document.querySelector('.assistant-form');
 const input = document.querySelector('#assistant-input');
 const messages = document.querySelector('.assistant-messages');
 const suggestions = [...document.querySelectorAll('.assistant-suggestions button')];
+const modeLabel = document.querySelector('.assistant-mode');
 
 let knowledgePromise;
 let conversationHistory = [];
+
+const setAssistantMode = mode => {
+  if (!modeLabel) return;
+  modeLabel.textContent = mode === 'ai'
+    ? 'AI reasoning · approved sources'
+    : 'Approved-knowledge preview · AI endpoint not connected';
+};
 
 const loadKnowledge = () => {
   if (!knowledgePromise) {
@@ -88,13 +103,31 @@ const addMessage = (text, type, options = {}) => {
     article.appendChild(sourceLine);
   }
 
+  if (options.basis) {
+    const basis = document.createElement('span');
+    basis.className = 'assistant-basis';
+    basis.textContent = options.basis;
+    article.appendChild(basis);
+  }
+
   if (options.handoff) {
-    const handoff = document.createElement('a');
-    handoff.className = 'assistant-handoff';
-    handoff.href = '#connect';
-    handoff.textContent = 'Request a conversation with A4O →';
-    handoff.addEventListener('click', closeAssistant);
-    article.appendChild(handoff);
+    const actions = document.createElement('div');
+    actions.className = 'assistant-handoff-actions';
+
+    const schedule = document.createElement('a');
+    schedule.className = 'assistant-handoff';
+    schedule.href = ATTUNED_CONFIG.scheduleUrl;
+    schedule.target = '_blank';
+    schedule.rel = 'noopener';
+    schedule.textContent = 'Schedule an appointment →';
+
+    const contact = document.createElement('a');
+    contact.className = 'assistant-handoff assistant-handoff-secondary';
+    contact.href = `mailto:${ATTUNED_CONFIG.contactEmail}`;
+    contact.textContent = 'Contact us →';
+
+    actions.append(schedule, contact);
+    article.appendChild(actions);
   }
 
   messages.appendChild(article);
@@ -106,7 +139,27 @@ const normalizeWords = value => (value.toLowerCase().match(/[a-z0-9]+/g) || [])
   .filter(word => (word.length > 2 || ['ai', 'ml'].includes(word))
     && !['the', 'and', 'that', 'with', 'for', 'from', 'your', 'about', 'how', 'can', 'does', 'help', 'what', 'tell', 'our'].includes(word));
 
+const answerKnownCapability = question => {
+  const customLLMIntent = /\b(?:custom|private|domain[- ]specific|bespoke)\b.{0,45}\b(?:llm|large language model|generative ai|ai assistant|chatbot|rag)\b|\b(?:llm|large language model|generative ai|ai assistant|chatbot|rag)\b.{0,45}\b(?:build|create|develop|custom|private|bespoke)\b/i;
+
+  if (!customLLMIntent.test(question)) return null;
+
+  return {
+    answer: 'Yes. A4O can lead a custom LLM or generative AI initiative, with QuantUp providing specialist AI product engineering. The confirmed capability base includes custom AI product development, bespoke algorithms and solutions, natural-language processing, generative AI, APIs, scalable deployment, MLOps, and production integration. Depending on discovery, the solution could use private organizational knowledge, retrieval-augmented generation, model adaptation, tool-using workflows, evaluation, guardrails, and monitoring. A4O would lead the business case, governance, responsible-AI controls, adoption, and measurable outcomes; the exact architecture, cost, security design, and timeline would be confirmed during discovery.',
+    sources: [
+      { title: 'QuantUp — AI product development', url: 'https://quantup.ai/what-we-do/ai-product-development/' },
+      { title: 'QuantUp — bespoke AI solutions', url: 'https://quantup.ai/what-we-do/business-process-optimisation/' }
+    ],
+    handoff: false,
+    basis: 'Supported capability · scope confirmed in discovery',
+    mode: 'preview'
+  };
+};
+
 const answerFromKnowledge = async question => {
+  const knownCapability = answerKnownCapability(question);
+  if (knownCapability) return knownCapability;
+
   const knowledge = await loadKnowledge();
   const queryWords = new Set(normalizeWords(question));
   const chunks = knowledge
@@ -133,10 +186,11 @@ const answerFromKnowledge = async question => {
   if (!relevant.length || contactIntent) {
     return {
       answer: contactIntent
-        ? 'I can help you connect with A4O. Use “Request a conversation” below and John will follow up about your initiative.'
+        ? 'Yes. You can schedule an appointment directly with John using Calendly or email A4O at john.kobielski@att4opt.com. Choose either option below.'
         : 'I could not verify that from the approved A4O knowledge. I can still help you request a conversation with John.',
       sources: [{ title: 'A4O', url: 'https://att4opt.com/' }],
       handoff: true,
+      basis: 'Human confirmation recommended',
       mode: 'preview'
     };
   }
@@ -153,6 +207,7 @@ const answerFromKnowledge = async question => {
     answer: `${answer.slice(0, 780)}${answer.length > 780 ? '…' : ''}`,
     sources: [{ title: 'A4O approved knowledge', url: 'https://att4opt.com/' }],
     handoff: false,
+    basis: 'Approved A4O knowledge',
     mode: 'preview'
   };
 };
@@ -186,14 +241,17 @@ const submitQuestion = async question => {
     let result;
     try {
       result = await askSecureAssistant(trimmed);
+      setAssistantMode('ai');
     } catch {
       result = await answerFromKnowledge(trimmed);
+      setAssistantMode('preview');
     }
 
     loading.remove();
     addMessage(result.answer, 'bot', {
       sources: result.sources,
-      handoff: Boolean(result.handoff)
+      handoff: Boolean(result.handoff),
+      basis: result.basis
     });
     conversationHistory.push({ role: 'assistant', content: result.answer });
   } catch {
