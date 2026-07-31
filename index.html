@@ -18,7 +18,7 @@
     - Change the version number after a CSS edit so browsers do not show an old cached design.
   -->
   <link rel="stylesheet" href="styles.css?v=20260731-6">
-  <link rel="stylesheet" href="custom.css?v=20260731-12">
+  <link rel="stylesheet" href="custom.css?v=20260731-14">
 </head>
 <body>
   <header class="site-header">
@@ -457,6 +457,20 @@
     // 'https://YOUR-NETLIFY-SITE.netlify.app/api/attuned-assistant'
     window.ATTUNED_ASSISTANT_ENDPOINT = 'https://deluxe-licorice-e15e34.netlify.app/api/attuned-assistant';
   </script>
+  <div class="floating-nav">
+    <button class="floating-nav-toggle" type="button" aria-expanded="false" aria-controls="floating-nav-menu">
+      <span class="floating-nav-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Menu</span>
+    </button>
+    <nav class="floating-nav-menu" id="floating-nav-menu" aria-label="Quick navigation" hidden>
+      <div class="floating-nav-heading"><strong>Explore A4O</strong><button class="floating-nav-close" type="button" aria-label="Close quick navigation">×</button></div>
+      <a href="#services">Services <span>01</span></a><a href="#model">Our model <span>02</span></a>
+      <a href="#oatf-ai">OATF/AI <span>03</span></a><a href="#partners">Partners <span>04</span></a>
+      <a href="#opportunities">Where we help <span>05</span></a><a href="#testimonials">Testimonials <span>06</span></a>
+      <a href="#owner">About the Owner <span>07</span></a><a href="#connect">Start a conversation <span>↗</span></a>
+      <a class="floating-nav-top" href="#top"><span aria-hidden="true">↑</span> Back to top</a>
+    </nav>
+  </div>
   <button class="assistant-launcher" type="button" aria-expanded="false" aria-controls="attuned-assistant">
     <span class="assistant-launcher-icon" aria-hidden="true">A4O</span>
     <span>Ask Attuned</span>
@@ -501,7 +515,7 @@
 
   <dialog class="lightbox"><button aria-label="Close graphic">×</button><img src="assets/a4o-offering.png" alt="A4O offering overview"></dialog>
   <!-- Change this version number after editing script.js to avoid cached JavaScript. -->
-  <script src="script.js?v=20260731-7"></script>
+  <script src="script.js?v=20260731-9"></script>
   <script src="assistant.js?v=20260731-11"></script>
 </body>
 </html>
