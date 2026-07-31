@@ -25,6 +25,9 @@ A4O is a U.S.-based strategy, transformation, program leadership, and organizati
 ## Industrial AI, IoT, and digitalization
 A4O helps organizations prioritize industrial AI use cases, build governance, and coordinate AI-driven image and video analysis, computer and machine vision, automated visual inspection, object and defect detection, predictive quality, and predictive analytics. A4O also helps integrate IoT and operational data, redesign workflows, and drive adoption.
 
+## End-to-end AI delivery
+A4O can lead AI research and development, problem and data feasibility, AI/ML modeling, proofs of concept, controlled pilots, validation, custom LLM and AI product development, RAG, NLP, AI workflows and agents, MLOps, production integration, evaluation, monitoring, adoption, and continuous improvement.
+
 ## Technology partners
 QuantUp provides AI, advanced analytics, optimization, computer vision, generative AI, and production integration. GammaSoft provides enterprise software, workflow automation, IoT and smart-city platforms, integration, modernization, maintenance, and support.
 
