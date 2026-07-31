@@ -1,8 +1,13 @@
+
 # Attuned Assistant setup and maintenance
 
-## The file you edit
+## Your free-form knowledge file
 
 Edit `knowledge/attuned-assistant.md` whenever A4O services, partners, capabilities, biographies, FAQs, or contact details change.
+
+It is ordinary Markdown: write headings and plain-language paragraphs in any structure that is useful. You can replace the entire file with a newer approved version, or add sections over time. The preview assistant reads it directly, and the secure ChatGPT-powered assistant includes the same file as its primary A4O context on every request.
+
+After changing it, publish the file with the website. No model retraining or code change is required.
 
 The file is published with the website, so do not add passwords, API keys, private client information, or confidential material.
 
@@ -29,6 +34,8 @@ Never put the API key in GitHub, JavaScript delivered to the browser, or the Mar
 
 The secure function already permits calls from `att4opt.com`, `www.att4opt.com`, and the GitHub Pages origin. The full assistant uses A4O-approved knowledge, applies broader model reasoning for technology explanations, and searches only `att4opt.com`, `quantup.ai`, and `gammasoft.pl` for business-specific evidence.
 
+The `a4o-attunement.jan-a4o.chatgpt.site` preview origin is also permitted for controlled testing. Remove it from `ALLOWED_ORIGINS` in `netlify/functions/attuned-assistant.mjs` if that preview is retired.
+
 For capability questions, the assistant distinguishes confirmed facts from evidence-based inferences. It may infer a nearby capability when approved evidence supports the required skills, but it must label the scope as subject to discovery. If it cannot verify or responsibly infer an answer, it offers a human conversation.
 
 ## Example now covered
@@ -41,3 +48,4 @@ For “Can you develop a custom LLM?”, the assistant can answer yes based on Q
 - Email: `john.kobielski@att4opt.com`
 
 Consider enabling Netlify rate limiting or a bot-protection control before promoting the assistant broadly.
+
