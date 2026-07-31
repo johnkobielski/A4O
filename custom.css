@@ -536,6 +536,26 @@ footer .footer-brand small {
   width: 18px !important;
 }
 
+.lineage-site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lineage-tjnl-link {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.lineage-tjnl-link img {
+  display: block;
+}
+
 /* =========================================================
    ATTUNED ASSISTANT
    ========================================================= */
@@ -711,15 +731,26 @@ footer .footer-brand small {
   letter-spacing: .02em;
 }
 
+.assistant-handoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 11px;
+}
+
 .assistant-handoff {
   display: inline-flex;
-  margin-top: 11px;
   padding: 8px 10px;
   border-radius: 5px;
   color: #fff !important;
   background: var(--red);
   font-size: 10px;
   text-decoration: none !important;
+}
+
+.assistant-handoff-secondary {
+  color: var(--navy) !important;
+  background: #edf3f8;
 }
 
 .assistant-suggestions {
@@ -790,9 +821,50 @@ footer .footer-brand small {
   font-weight: 800;
 }
 
+.assistant-footer-actions {
+  display: inline-flex;
+  gap: 9px;
+}
+
+.assistant-footer-actions a + a {
+  padding-left: 9px;
+  border-left: 1px solid var(--line);
+}
+
 .assistant-mode {
   max-width: 62%;
   line-height: 1.25;
+}
+
+/* Contact calls-to-action. Change the Calendly or email URLs in index.html. */
+.connect-button-group {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px;
+  text-align: left !important;
+}
+
+.connect-button-group .button {
+  min-width: 205px;
+}
+
+.connect-email {
+  border: 1px solid #ffffff66;
+  color: #fff;
+  background: #ffffff0f;
+}
+
+@media (max-width: 820px) {
+  .connect-button-group {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .connect-button-group,
+  .connect-button-group .button {
+    width: 100%;
+  }
 }
 
 /* =========================================================
