@@ -481,22 +481,63 @@ footer .footer-brand small {
 .experience-wordmarks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
+  gap: 12px;
   margin-top: 24px;
-  background: var(--line);
-  border: 1px solid var(--line);
 }
 
-.experience-wordmarks span {
+.experience-wordmarks figure {
   display: grid;
-  min-height: 82px;
-  padding: 14px;
+  grid-template-rows: 1fr auto;
+  min-width: 0;
+  min-height: 118px;
+  margin: 0;
+  padding: 20px 18px 14px;
   place-items: center;
-  color: #33445a;
   background: #fff;
-  font: 700 clamp(16px, 1.45vw, 23px) var(--display);
-  letter-spacing: -.035em;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(5, 35, 79, .045);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.experience-wordmarks figure:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14, 60, 125, .28);
+  box-shadow: 0 15px 32px rgba(5, 35, 79, .09);
+}
+
+.experience-wordmarks img {
+  display: block;
+  width: auto;
+  max-width: 104px;
+  height: 46px;
+  max-height: 54px;
+  object-fit: contain;
+  opacity: .9;
+  filter: grayscale(1) contrast(1.05);
+  transition: opacity .2s ease, filter .2s ease;
+}
+
+.experience-wordmarks figure:hover img {
+  opacity: 1;
+  filter: grayscale(0) contrast(1);
+}
+
+.experience-wordmarks .experience-logo-wide {
+  max-width: 150px;
+}
+
+.experience-wordmarks .experience-logo-tall {
+  height: 54px;
+}
+
+.experience-wordmarks figcaption {
+  margin-top: 14px;
+  color: #607087;
+  font: 700 10px/1.25 var(--sans);
+  letter-spacing: .1em;
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* =========================================================
