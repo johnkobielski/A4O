@@ -112,6 +112,8 @@ Website: https://gammasoft.pl/
 
 Established in 2011, GammaSoft develops business-critical software for public institutions, regulated industries, and enterprise customers.
 
+GammaSoft Sp. z o.o. lists its office at ul. Jagiellońska 97, 70-435 Szczecin, Poland.
+
 GammaSoft capabilities include public procurement and shared-services platforms, workflow and business-process automation, AI-powered business solutions, IoT monitoring and smart-city platforms, enterprise web and mobile development, systems integration, modernization, maintenance, and support.
 
 Selected solutions described in A4O partner materials include GCUW for centralized purchasing and administration, PBK for public tender and purchasing lifecycle, VIP2030 for evidence-based clinical decision support, EcoBins for connected waste-management monitoring, and ReTrader for inventory, warehouse, and marketplace operations.
