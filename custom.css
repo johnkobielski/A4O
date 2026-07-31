@@ -601,6 +601,22 @@ footer .footer-brand small {
    ATTUNED ASSISTANT
    ========================================================= */
 
+.floating-nav { position: fixed; z-index: 79; right: 190px; bottom: 22px; }
+.floating-nav-toggle { display:flex; align-items:center; gap:9px; min-height:54px; padding:8px 17px 8px 10px; border:1px solid #dbe3ed; border-radius:999px; color:var(--navy); background:#fff; box-shadow:0 16px 42px #071c3b30; cursor:pointer; font-size:13px; font-weight:800; }
+.floating-nav-icon { display:grid; gap:4px; width:34px; height:34px; place-content:center; border-radius:50%; background:#edf3f9; }
+.floating-nav-icon i { display:block; width:14px; height:2px; background:var(--navy); }
+.floating-nav-menu { position:absolute; right:0; bottom:66px; width:min(300px, calc(100vw - 32px)); overflow:hidden; border:1px solid #dfe6ef; border-radius:12px; background:#fff; box-shadow:0 28px 90px #03122c45; }
+.floating-nav-menu[hidden] { display:none; }
+.floating-nav-heading { display:flex; align-items:center; justify-content:space-between; min-height:64px; padding:12px 14px 12px 18px; color:#fff; background:linear-gradient(135deg, #062457, #0b4a8c); }
+.floating-nav-heading strong { font:800 15px var(--display); }
+.floating-nav-close { width:34px; height:34px; border:1px solid #ffffff38; border-radius:50%; color:#fff; background:transparent; cursor:pointer; font-size:21px; }
+.floating-nav-menu > a { display:flex; align-items:center; justify-content:space-between; min-height:43px; padding:8px 18px; border-bottom:1px solid #e8edf3; color:#24364d; font-size:13px; font-weight:700; text-decoration:none; }
+.floating-nav-menu > a:hover, .floating-nav-menu > a:focus-visible { color:var(--blue); background:#f4f7fb; }
+.floating-nav-menu > a > span { color:#8190a3; font-size:10px; letter-spacing:.08em; }
+.floating-nav-menu > .floating-nav-top { justify-content:center; gap:9px; min-height:48px; border-bottom:0; color:#fff; background:var(--red); }
+.floating-nav-menu > .floating-nav-top:hover, .floating-nav-menu > .floating-nav-top:focus-visible { color:#fff; background:#c80d14; }
+.floating-nav-menu > .floating-nav-top > span { color:inherit; font-size:18px; }
+
 .assistant-launcher {
   position: fixed;
   z-index: 80;
@@ -1217,6 +1233,11 @@ footer .footer-brand small {
     bottom: 14px;
   }
 
+  .floating-nav { right:168px; bottom:14px; }
+  .floating-nav-toggle { width:54px; padding:8px; }
+  .floating-nav-toggle > span:last-child { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .floating-nav-menu { right:-154px; bottom:64px; }
+
   .assistant-panel {
     right: 16px;
     bottom: 78px;
@@ -1624,3 +1645,4 @@ footer .footer-brand small {
     transition: none;
   }
 }
+
