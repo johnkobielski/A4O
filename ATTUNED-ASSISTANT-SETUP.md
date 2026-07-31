@@ -35,11 +35,9 @@ For capability questions, the assistant distinguishes confirmed facts from evide
 
 For “Can you develop a custom LLM?”, the assistant can answer yes based on QuantUp’s documented AI product-development lifecycle, bespoke solutions and algorithms, natural-language processing, generative AI, APIs, scalable deployment, MLOps, and production integration. A4O’s role is business case, governance, responsible-AI controls, adoption, and program leadership; the exact solution architecture is confirmed during discovery.
 
-## Before launch
+## Contact links now configured
 
-Replace these two placeholders in `knowledge/attuned-assistant.md`:
-
-- `Contact email: TO BE ADDED`
-- `Scheduling link: TO BE ADDED`
+- Scheduling: `https://calendly.com/john-kobielski-att4opt`
+- Email: `john.kobielski@att4opt.com`
 
 Consider enabling Netlify rate limiting or a bot-protection control before promoting the assistant broadly.
