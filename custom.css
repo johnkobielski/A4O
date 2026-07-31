@@ -1250,3 +1250,229 @@ footer .footer-brand small {
     transition: none;
   }
 }
+
+/* =========================================================
+   OATF/AI FRAMEWORK
+   Manual editing:
+   - Change the section colors here without touching the diagram.
+   - The diagram itself is assets/oatf-ai-framework-map.svg.
+   ========================================================= */
+.oatf-ai {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0, #dcebf8 0, transparent 33%),
+    linear-gradient(180deg, #f7f9fc 0, #fff 55%);
+}
+
+.oatf-ai::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(5vw, 28px);
+  width: 96px;
+  height: 4px;
+  background: var(--red);
+}
+
+.oatf-ai-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+  gap: clamp(48px, 8vw, 130px);
+  align-items: start;
+}
+
+.oatf-ai h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(38px, 4.2vw, 64px);
+  line-height: 1.06;
+  letter-spacing: -.05em;
+}
+
+.oatf-ai h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.oatf-ai-summary {
+  padding-top: 44px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.oatf-ai-summary p {
+  margin: 0 0 18px;
+}
+
+.oatf-ai-summary .oatf-ai-lede {
+  color: var(--navy);
+  font: 600 clamp(18px, 1.6vw, 23px)/1.55 var(--display);
+  letter-spacing: -.02em;
+}
+
+.oatf-ai-boundary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 54px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #ffffff2e;
+  box-shadow: 0 24px 70px #071c3b1a;
+}
+
+.oatf-ai-boundary > div {
+  min-height: 188px;
+  padding: 34px clamp(28px, 4vw, 58px);
+  background: var(--navy);
+  color: #fff;
+}
+
+.oatf-ai-boundary > div:last-child {
+  background: #0b3a77;
+}
+
+.oatf-ai-boundary span {
+  display: block;
+  margin-bottom: 17px;
+  color: #ff4b50;
+  font: 700 11px var(--display);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.oatf-ai-boundary p {
+  max-width: 660px;
+  margin: 0;
+  color: #dce7f3;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.oatf-ai-domains {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.oatf-ai-domains span {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 15px;
+  border: 1px solid #dbe3ee;
+  border-top: 3px solid #1765ab;
+  background: #fff;
+  color: var(--navy);
+  font: 700 12px/1.35 var(--display);
+  box-shadow: 0 9px 24px #071c3b0d;
+}
+
+.oatf-ai-domains span:first-child {
+  border-top-color: var(--red);
+}
+
+.oatf-ai-map-copy {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin: 70px 0 28px;
+}
+
+.oatf-ai-map-copy p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.oatf-ai-map-copy strong {
+  max-width: 330px;
+  padding-left: 23px;
+  border-left: 3px solid var(--red);
+  color: var(--navy);
+  font: 700 17px/1.45 var(--display);
+}
+
+.oatf-ai .oatf-ai-map-frame {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d8e1ec;
+  border-radius: 4px;
+  background: #eef3f9;
+  box-shadow: 0 30px 80px #071c3b1f;
+}
+
+.oatf-ai .oatf-ai-map-frame:focus-visible {
+  outline: 3px solid #1765ab;
+  outline-offset: 4px;
+}
+
+.oatf-ai-caption {
+  margin: 15px 0 0;
+  color: #6d7f94;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* Keep wide, detailed diagrams fully visible in the shared viewer. */
+.lightbox img {
+  max-height: calc(100vh - 24px);
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .oatf-ai-domains {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .oatf-ai-intro,
+  .oatf-ai-boundary {
+    grid-template-columns: 1fr;
+  }
+
+  .oatf-ai-summary {
+    padding-top: 0;
+  }
+
+  .oatf-ai-map-copy {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .oatf-ai-map-copy strong {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 560px) {
+  .oatf-ai-domains {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oatf-ai-boundary > div {
+    min-height: 0;
+    padding: 28px 24px;
+  }
+
+  .oatf-ai .oatf-ai-map-frame {
+    padding: 7px;
+  }
+
+  .oatf-ai .oatf-ai-map-frame span {
+    right: 14px;
+    bottom: 14px;
+    padding: 9px 11px;
+  }
+}
