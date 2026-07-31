@@ -133,9 +133,17 @@ A4O focuses on adoption, not just installation, connecting technology delivery w
 
 John S. Kobielski, PhD, MBA, is the Founder and Managing Director of Attunement 4 Optimum.
 
-John brings more than 25 years of leadership across complex technology and transformation programs. He serves as the senior accountable interface aligning executives, delivery teams, and specialist partners from business case through adoption and measurable value.
+Attuned Performance. Responsible AI. Real Results.
 
-John's professional experience includes work with GM, OnStar, Whirlpool, United Airlines, First Solar, Infosys, Grant Thornton, and Visteon. These organizations are listed as leadership experience and are not represented as current A4O customers, sponsors, or endorsers.
+John helps organizations turn complex technology, transformation, and regulation into clear, measurable outcomes. He brings more than 25 years of experience and has led more than $100 million in programs across automotive, manufacturing, public sector, financial services, and healthcare. His work has helped companies save millions, reduce risk, and strengthen their teams.
+
+John works through the Optimum Attunement™ Transformation Framework, abbreviated OATF, applied across artificial intelligence, Agile, digital transformation, and mergers and acquisitions integration. The framework aligns business strategy with real-world execution.
+
+The artificial-intelligence application is the Optimum Attunement™ AI Transformation Framework, abbreviated OATF/AI. Its path is: From Operational Attunement to Responsible AI in Operation.
+
+John leverages artificial intelligence, cloud platforms, and connected devices while helping organizations build attuned performance, responsible AI adoption, and leadership teams ready to operate in regulated, compliance-driven environments.
+
+John's selected client and leadership experience includes GM, OnStar, Toyota, Whirlpool, United Airlines, First Solar, Infosys, Grant Thornton, and Visteon. These organizations are not represented as current A4O sponsors or endorsers.
 
 ## Company family
 

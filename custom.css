@@ -366,16 +366,23 @@ footer .footer-brand small {
   display: grid;
   grid-template-columns: 230px 1fr;
   gap: 6vw;
-  align-items: center;
+  align-items: start;
   background: var(--paper);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
+.owner-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
 .owner-portrait {
   position: relative;
-  width: 210px;
-  height: 210px;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
   border: 7px solid #fff;
   box-shadow: 0 20px 55px #071c3b20;
@@ -397,14 +404,37 @@ footer .footer-brand small {
   object-position: 50% 28%;
 }
 
+.owner-identity {
+  width: 180px;
+  margin-top: 18px;
+}
+
+.owner-identity strong {
+  display: block;
+  color: var(--navy);
+  font: 800 14px/1.35 var(--display);
+  letter-spacing: -.02em;
+}
+
+.owner-identity span {
+  display: block;
+  margin-top: 7px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .owner-copy {
-  max-width: 780px;
+  max-width: 900px;
 }
 
 .owner-copy h2 {
-  margin-bottom: 8px;
-  font-size: clamp(38px, 4.2vw, 62px);
-  line-height: 1.06;
+  margin-bottom: 24px;
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1.04;
   letter-spacing: -.045em;
 }
 
@@ -413,18 +443,20 @@ footer .footer-brand small {
   font-style: normal;
 }
 
-.owner-role {
-  color: var(--blue);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+.owner-copy > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.72;
 }
 
-.owner-copy > p:not(.eyebrow, .owner-role) {
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.75;
+.owner-copy > p strong {
+  color: var(--ink);
+}
+
+.owner-copy > p em {
+  color: var(--blue);
+  font-style: normal;
+  font-weight: 800;
 }
 
 .owner-button {
@@ -448,7 +480,7 @@ footer .footer-brand small {
 
 .experience-wordmarks {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   margin-top: 24px;
   background: var(--line);
