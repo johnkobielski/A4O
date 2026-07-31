@@ -1,0 +1,372 @@
+/*
+  A4O MANUAL EDITING GUIDE
+  ========================
+  This file intentionally contains the easy-to-change settings and readable layout
+  overrides. The original compressed design remains in styles.css.
+
+  QUICK CHANGES:
+  1. Change logo sizes in :root immediately below.
+  2. Change graph box positions under "A4O FOUR-PILLAR GRAPH".
+  3. Change testimonial appearance under "TESTIMONIAL CAROUSEL".
+  4. After editing, increase the ?v= number beside custom.css in index.html so
+     browsers download your new version instead of displaying a cached copy.
+*/
+
+:root {
+  /* Logo widths. Increase or decrease these pixel values as desired. */
+  --header-a4o-logo-width: 92px;
+  --footer-a4o-logo-width: 104px;
+  --lineage-a4o-logo-width: 150px;
+  --lineage-tjnl-logo-width: 180px;
+
+  /* Testimonial colors. */
+  --testimonial-background: #061f52;
+  --testimonial-accent: #ed111a;
+}
+
+/* =========================================================
+   A4O LOGOS — foreground, transparent, and never clipped
+   ========================================================= */
+
+.site-header {
+  overflow: visible !important;
+}
+
+.site-header .official-brand,
+footer .footer-brand {
+  display: block !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  isolation: isolate;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header .official-brand {
+  width: var(--header-a4o-logo-width) !important;
+}
+
+footer .footer-brand {
+  width: var(--footer-a4o-logo-width) !important;
+}
+
+.site-header .official-brand img,
+footer .footer-brand img {
+  position: relative;
+  z-index: 30;
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  object-fit: contain;
+  background: transparent !important;
+}
+
+.site-header .official-brand small,
+footer .footer-brand small {
+  position: static !important;
+  display: block;
+  margin-top: 3px;
+  color: #b8c9dc;
+  font: 700 6px var(--display);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The two logos in the "A TJNL company" section. */
+.lineage-lockup {
+  grid-template-columns:
+    minmax(110px, var(--lineage-a4o-logo-width))
+    auto
+    minmax(130px, var(--lineage-tjnl-logo-width)) !important;
+  justify-content: center;
+}
+
+.lineage-a4o {
+  width: 100% !important;
+  max-width: var(--lineage-a4o-logo-width) !important;
+  height: auto !important;
+}
+
+.lineage-tjnl {
+  width: 100% !important;
+  max-width: var(--lineage-tjnl-logo-width) !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* =========================================================
+   A4O FOUR-PILLAR GRAPH
+   The four boxes use a real two-by-two grid. This prevents
+   Technology, Strategy, Leadership, and Adoption from overlapping.
+   ========================================================= */
+
+.hero-visual {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 32px;
+  padding: 38px 0 26px;
+}
+
+.hero-visual .signal {
+  position: relative !important;
+  inset: auto !important;
+  margin: 0 !important;
+}
+
+.hero-visual .signal-a {
+  align-self: start;
+  justify-self: start;
+}
+
+.hero-visual .signal-b {
+  align-self: start;
+  justify-self: end;
+}
+
+.hero-visual .signal-c {
+  align-self: end;
+  justify-self: start;
+}
+
+.hero-visual .signal-d {
+  align-self: end;
+  justify-self: end;
+}
+
+/* =========================================================
+   TESTIMONIAL CAROUSEL
+   ========================================================= */
+
+.testimonials {
+  display: grid;
+  grid-template-columns: .72fr 1.28fr;
+  gap: 7vw;
+  align-items: center;
+  background: #fff;
+}
+
+.testimonials-intro h2 {
+  font-size: clamp(38px, 4.2vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.testimonials-intro h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.testimonials-intro > p:last-of-type {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.testimonial-kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 38px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.testimonial-kpis div {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  background: var(--paper);
+}
+
+.testimonial-kpis strong {
+  color: var(--red);
+  font: 800 28px var(--display);
+}
+
+.testimonial-kpis span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.testimonial-carousel {
+  min-width: 0;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 85% 15%, #1267af 0, #082e68 38%, #061f52 75%);
+  box-shadow: 0 28px 80px #061f5230;
+}
+
+.testimonial-slides {
+  position: relative;
+  min-height: 480px;
+}
+
+.testimonial-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 58px 64px 42px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(32px);
+  transition: opacity .45s ease, transform .45s ease, visibility .45s;
+}
+
+.testimonial-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.testimonial-slide .quote-mark {
+  height: 48px;
+  color: var(--testimonial-accent);
+  font: 800 74px/1 var(--display);
+}
+
+.testimonial-slide blockquote {
+  margin: 12px 0 34px;
+  font: 600 clamp(19px, 1.75vw, 28px)/1.55 var(--display);
+  letter-spacing: -.025em;
+}
+
+.testimonial-slide footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.testimonial-slide footer strong {
+  font: 700 15px var(--display);
+}
+
+.testimonial-slide footer span {
+  margin-top: 6px;
+  color: #a9bdd5;
+  font-size: 12px;
+}
+
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 0 34px;
+  border-top: 1px solid #ffffff24;
+}
+
+.testimonial-dots,
+.testimonial-arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonial-dot {
+  width: 28px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  background: #ffffff45;
+  cursor: pointer;
+}
+
+.testimonial-dot.is-active {
+  background: var(--testimonial-accent);
+}
+
+.testimonial-arrows button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ffffff44;
+  border-radius: 50%;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.testimonial-arrows button:hover,
+.testimonial-arrows button:focus-visible {
+  border-color: #fff;
+  background: #ffffff12;
+}
+
+@media (max-width: 1000px) {
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-carousel {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 650px) {
+  :root {
+    --header-a4o-logo-width: 76px;
+    --footer-a4o-logo-width: 92px;
+    --lineage-a4o-logo-width: 135px;
+    --lineage-tjnl-logo-width: 155px;
+  }
+
+  .hero-visual {
+    height: 480px !important;
+    margin: 0 !important;
+    column-gap: 22px;
+    padding: 25px 0;
+  }
+
+  .hero-visual .signal {
+    width: 140px;
+  }
+
+  .hero-visual .core {
+    width: 160px;
+    height: 160px;
+  }
+
+  .lineage-lockup {
+    grid-template-columns: 1fr !important;
+  }
+
+  .testimonial-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-slides {
+    min-height: 560px;
+  }
+
+  .testimonial-slide {
+    padding: 42px 28px 32px;
+  }
+
+  .testimonial-slide blockquote {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .testimonial-controls {
+    padding: 0 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide {
+    transition: none;
+  }
+}
+
