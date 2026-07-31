@@ -9,11 +9,7 @@
   2. Optional live web search restricted to att4opt.com, quantup.ai, and gammasoft.pl.
 */
 
-import { readFile } from 'node:fs/promises';
-
-// Netlify bundles this function into /var/task while preserving the explicitly
-// included knowledge file at the project-relative path below.
-const KNOWLEDGE_PATH = 'knowledge/attuned-assistant.md';
+const KNOWLEDGE_URL = 'https://att4opt.com/knowledge/attuned-assistant.md';
 const APPROVED_DOMAINS = ['att4opt.com', 'quantup.ai', 'gammasoft.pl'];
 const ALLOWED_ORIGINS = [
   'https://att4opt.com',
@@ -115,7 +111,14 @@ export const handler = async event => {
   }
 
   try {
-    const knowledge = await readFile(KNOWLEDGE_PATH, 'utf8');
+    const knowledgeResponse = await fetch(KNOWLEDGE_URL, {
+      signal: AbortSignal.timeout(10000),
+      headers: { accept: 'text/markdown, text/plain;q=0.9' }
+    });
+    if (!knowledgeResponse.ok) {
+      throw new Error(`Approved knowledge unavailable (${knowledgeResponse.status})`);
+    }
+    const knowledge = await knowledgeResponse.text();
     const input = [
       ...cleanHistory(payload.history),
       { role: 'user', content: message }
@@ -216,10 +219,3 @@ ${knowledge}`,
     return json(500, { error: 'The assistant is temporarily unavailable.' }, event);
   }
 };
-
-[31;1mnode: [0m
-[31;1m[36;1mLine |[0m
-[31;1m[36;1m[36;1m   2 | [0m [36;1mnode[0m --check 'C:\Users\johnk\Documents\Codex\2026-07-31\sites-deploy- …[0m
-[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m ~~~~[0m
-[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mThe term 'node' is not recognized as a name of a cmdlet, function, script file, or executable program.[0m
-[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.[0m
