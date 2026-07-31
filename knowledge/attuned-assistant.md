@@ -59,6 +59,14 @@ A4O coordinates business architecture, requirements, specialist-partner selectio
 
 Capabilities include predictive analytics, deep learning, time-series forecasting, mathematical optimization, decision models, computer vision, image and video processing, generative AI, natural-language processing, MLOps, APIs, and production integration.
 
+## End-to-end AI research and product delivery
+
+A4O can lead an AI initiative from initial opportunity framing through production operation. The delivery continuum includes AI research and development, problem definition, data and model feasibility, experimentation, predictive and deep-learning model development, optimization, proof of concept, controlled pilots, validation, explainability, safeguards, custom AI product engineering, production integration, MLOps, evaluation, monitoring, adoption, and continuous improvement.
+
+Key offerings include custom LLM and generative AI solutions, retrieval-augmented generation (RAG), natural-language processing, AI-enabled workflows and agents, predictive models, decision models, industrial computer vision, AI-driven image and video analysis, automated visual inspection, defect detection, predictive quality, and bespoke AI products.
+
+A4O leads the business case, transformation roadmap, program, governance, responsible-AI controls, organizational adoption, and value realization. Specialist AI teams perform the technical research, modeling, prototyping, engineering, integration, deployment, and support.
+
 ## Custom LLM and generative AI solutions
 
 Yes. A4O can lead a custom large language model (LLM) or generative AI initiative, with QuantUp providing specialist AI product engineering.
