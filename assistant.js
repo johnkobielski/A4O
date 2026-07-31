@@ -13,7 +13,9 @@ const ATTUNED_CONFIG = {
   endpoint: window.ATTUNED_ASSISTANT_ENDPOINT || '/api/attuned-assistant',
   knowledgePath: 'knowledge/attuned-assistant.md',
   scheduleUrl: 'https://calendly.com/john-kobielski-att4opt',
-  contactEmail: 'john.kobielski@att4opt.com'
+  contactEmail: 'john.kobielski@att4opt.com',
+  // Fast typing effect: raise intervalMs or lower charsPerTick to slow it down.
+  typing: { intervalMs: 12, charsPerTick: 3, punctuationPauseMs: 42 }
 };
 
 const FALLBACK_KNOWLEDGE = `
@@ -25,6 +27,9 @@ A4O helps organizations prioritize industrial AI use cases, build governance, co
 
 ## Technology partners
 QuantUp provides AI, advanced analytics, optimization, computer vision, generative AI, and production integration. GammaSoft provides enterprise software, workflow automation, IoT and smart-city platforms, integration, modernization, maintenance, and support.
+
+## GammaSoft location
+GammaSoft Sp. z o.o. lists its office at ul. Jagiellońska 97, 70-435 Szczecin, Poland.
 
 ## Custom LLM and generative AI solutions
 A4O can lead a custom LLM or generative AI initiative, with QuantUp providing specialist AI product engineering. The capability base includes custom AI product development, bespoke algorithms and solutions, natural-language processing, generative AI, APIs, scalable deployment, MLOps, and production integration. The exact architecture is confirmed during discovery.
@@ -78,15 +83,7 @@ const closeAssistant = () => {
   launcher.focus();
 };
 
-const addMessage = (text, type, options = {}) => {
-  const article = document.createElement('article');
-  article.className = `assistant-message assistant-message-${type}`;
-  if (options.loading) article.classList.add('is-loading');
-
-  const paragraph = document.createElement('p');
-  paragraph.textContent = text;
-  article.appendChild(paragraph);
-
+const decorateMessage = (article, options = {}) => {
   if (Array.isArray(options.sources) && options.sources.length) {
     const sourceLine = document.createElement('p');
     sourceLine.className = 'assistant-sources';
@@ -129,15 +126,133 @@ const addMessage = (text, type, options = {}) => {
     actions.append(schedule, contact);
     article.appendChild(actions);
   }
+};
+
+const addMessage = (text, type, options = {}) => {
+  const article = document.createElement('article');
+  article.className = `assistant-message assistant-message-${type}`;
+  if (options.loading) article.classList.add('is-loading');
+
+  const paragraph = document.createElement('p');
+  paragraph.textContent = text;
+  article.appendChild(paragraph);
+
+  decorateMessage(article, options);
 
   messages.appendChild(article);
   messages.scrollTop = messages.scrollHeight;
   return article;
 };
 
+const addTypedBotMessage = async (text, options = {}) => {
+  const article = addMessage('', 'bot');
+  const paragraph = article.querySelector('p');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion || !text) {
+    paragraph.textContent = text;
+    decorateMessage(article, options);
+    return article;
+  }
+
+  article.classList.add('is-typing');
+  article.setAttribute('aria-busy', 'true');
+
+  let index = 0;
+  while (index < text.length && article.isConnected) {
+    index = Math.min(text.length, index + ATTUNED_CONFIG.typing.charsPerTick);
+    paragraph.textContent = text.slice(0, index);
+    messages.scrollTop = messages.scrollHeight;
+
+    const lastCharacter = text[index - 1] || '';
+    const delay = /[.!?]/.test(lastCharacter)
+      ? ATTUNED_CONFIG.typing.punctuationPauseMs
+      : ATTUNED_CONFIG.typing.intervalMs;
+    await new Promise(resolve => window.setTimeout(resolve, delay));
+  }
+
+  article.classList.remove('is-typing');
+  article.removeAttribute('aria-busy');
+  paragraph.textContent = text;
+  decorateMessage(article, options);
+  messages.scrollTop = messages.scrollHeight;
+  return article;
+};
+
+const ENTITY_NAMES = [
+  { canonical: 'GammaSoft', compact: 'gammasoft' },
+  { canonical: 'QuantUp', compact: 'quantup' },
+  { canonical: 'A4O', compact: 'a4o' },
+  { canonical: 'TJNL', compact: 'tjnl' },
+  { canonical: 'OATF', compact: 'oatf' }
+];
+
+const editDistance = (left, right) => {
+  const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    const current = [leftIndex];
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      const substitution = previous[rightIndex - 1] + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1);
+      current[rightIndex] = Math.min(
+        current[rightIndex - 1] + 1,
+        previous[rightIndex] + 1,
+        substitution
+      );
+    }
+    previous.splice(0, previous.length, ...current);
+  }
+  return previous[right.length];
+};
+
+const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const correctKnownEntities = value => {
+  let corrected = value
+    .replace(/\bgamma[\s-]+soft\b/ig, 'GammaSoft')
+    .replace(/\bquant[\s-]+up\b/ig, 'QuantUp')
+    .replace(/\btj[\s-]+nexus[\s-]+labs\b/ig, 'TJ Nexus Labs');
+  const corrections = [];
+  const words = corrected.match(/[a-z0-9]+/ig) || [];
+
+  [...new Set(words)].forEach(word => {
+    const normalized = word.toLowerCase();
+    if (normalized.length < 3 || ENTITY_NAMES.some(entity => entity.compact === normalized)) return;
+
+    const candidates = ENTITY_NAMES
+      .map(entity => ({ entity, distance: editDistance(normalized, entity.compact) }))
+      .sort((a, b) => a.distance - b.distance);
+    const best = candidates[0];
+    const threshold = best.entity.compact.length >= 7 ? 2 : 1;
+    if (best.distance > threshold) return;
+
+    corrected = corrected.replace(new RegExp(`\\b${escapeRegExp(word)}\\b`, 'ig'), best.entity.canonical);
+    corrections.push({ original: word, corrected: best.entity.canonical });
+  });
+
+  return { corrected, corrections };
+};
+
 const normalizeWords = value => (value.toLowerCase().match(/[a-z0-9]+/g) || [])
   .filter(word => (word.length > 2 || ['ai', 'ml'].includes(word))
-    && !['the', 'and', 'that', 'with', 'for', 'from', 'your', 'about', 'how', 'can', 'does', 'help', 'what', 'tell', 'our'].includes(word));
+    && !['the', 'and', 'that', 'with', 'for', 'from', 'your', 'about', 'how', 'can', 'does', 'help', 'what', 'tell', 'our', 'where', 'located', 'location', 'based', 'are', 'is'].includes(word));
+
+const LOCATION_INTENT = /\bwhere\b|\blocat(?:e|ed|ion)\b|\bbased\b|\baddress\b|\boffice\b|\bheadquarters?\b/i;
+
+const answerKnownFact = (question, corrections = []) => {
+  if (!LOCATION_INTENT.test(question) || !/\bgammasoft\b/i.test(question)) return null;
+
+  const correctionLead = corrections.length
+    ? `I interpreted “${corrections[0].original}” as “GammaSoft.” `
+    : '';
+
+  return {
+    answer: `${correctionLead}GammaSoft Sp. z o.o. lists its office at ul. Jagiellońska 97, 70-435 Szczecin, Poland.`,
+    sources: [{ title: 'GammaSoft — contact', url: 'https://gammasoft.pl/contact/' }],
+    handoff: false,
+    basis: 'Confirmed by GammaSoft',
+    mode: 'preview'
+  };
+};
 
 const answerKnownCapability = question => {
   const customLLMIntent = /\b(?:custom|private|domain[- ]specific|bespoke)\b.{0,45}\b(?:llm|large language model|generative ai|ai assistant|chatbot|rag)\b|\b(?:llm|large language model|generative ai|ai assistant|chatbot|rag)\b.{0,45}\b(?:build|create|develop|custom|private|bespoke)\b/i;
@@ -157,11 +272,29 @@ const answerKnownCapability = question => {
 };
 
 const answerFromKnowledge = async question => {
-  const knownCapability = answerKnownCapability(question);
+  const correction = correctKnownEntities(question);
+  const correctedQuestion = correction.corrected;
+
+  const knownFact = answerKnownFact(correctedQuestion, correction.corrections);
+  if (knownFact) return knownFact;
+
+  // Location requests need an exact known entity fact. Do not let generic words
+  // such as "company" match the Company identity section.
+  if (LOCATION_INTENT.test(correctedQuestion)) {
+    return {
+      answer: 'I could not verify that location from the approved A4O knowledge. Please use the contact option below and A4O will confirm it.',
+      sources: [{ title: 'A4O', url: 'https://att4opt.com/' }],
+      handoff: true,
+      basis: 'Location not verified',
+      mode: 'preview'
+    };
+  }
+
+  const knownCapability = answerKnownCapability(correctedQuestion);
   if (knownCapability) return knownCapability;
 
   const knowledge = await loadKnowledge();
-  const queryWords = new Set(normalizeWords(question));
+  const queryWords = new Set(normalizeWords(correctedQuestion));
   const chunks = knowledge
     .split(/\n(?=##\s)/)
     .map(chunk => chunk.trim())
@@ -170,15 +303,17 @@ const answerFromKnowledge = async question => {
   const ranked = chunks
     .map(chunk => {
       const chunkWords = new Set(normalizeWords(chunk));
-      const matches = [...chunkWords].reduce((score, word) => score + (queryWords.has(word) ? 1 : 0), 0);
+      const matchedWordCount = [...chunkWords].reduce((score, word) => score + (queryWords.has(word) ? 1 : 0), 0);
       const headingMatches = normalizeWords((chunk.split('\n')[0] || ''))
         .reduce((score, word) => score + (queryWords.has(word) ? 1 : 0), 0);
-      return { chunk, headingMatches, score: matches + (headingMatches * 8) };
+      return { chunk, headingMatches, matchedWordCount, score: matchedWordCount + (headingMatches * 8) };
     })
     .sort((a, b) => b.score - a.score);
 
-  const contactIntent = /email|contact|call|meeting|schedule|speak|talk|person/i.test(question);
-  const matches = ranked.filter(item => item.score > 0);
+  const contactIntent = /email|contact|call|meeting|schedule|speak|talk|person/i.test(correctedQuestion);
+  // Body-only matches require two meaningful words. One vague word is not
+  // enough evidence to return a large, unrelated section.
+  const matches = ranked.filter(item => item.headingMatches > 0 || item.matchedWordCount >= 2);
   // A heading match is precise enough to answer from one section. Broader
   // questions may combine the two strongest approved-knowledge sections.
   const relevant = matches[0]?.headingMatches ? matches.slice(0, 1) : matches.slice(0, 2);
@@ -195,6 +330,9 @@ const answerFromKnowledge = async question => {
     };
   }
 
+  const correctionLead = correction.corrections.length
+    ? `I interpreted “${correction.corrections[0].original}” as “${correction.corrections[0].corrected}.” `
+    : '';
   const answer = relevant
     .map(item => item.chunk
       .replace(/^##\s+.+\n?/, '')
@@ -204,7 +342,7 @@ const answerFromKnowledge = async question => {
     .join(' ');
 
   return {
-    answer: `${answer.slice(0, 780)}${answer.length > 780 ? '…' : ''}`,
+    answer: `${correctionLead}${answer.slice(0, 760)}${answer.length > 760 ? '…' : ''}`,
     sources: [{ title: 'A4O approved knowledge', url: 'https://att4opt.com/' }],
     handoff: false,
     basis: 'Approved A4O knowledge',
@@ -248,7 +386,7 @@ const submitQuestion = async question => {
     }
 
     loading.remove();
-    addMessage(result.answer, 'bot', {
+    await addTypedBotMessage(result.answer, {
       sources: result.sources,
       handoff: Boolean(result.handoff),
       basis: result.basis
@@ -256,7 +394,7 @@ const submitQuestion = async question => {
     conversationHistory.push({ role: 'assistant', content: result.answer });
   } catch {
     loading.remove();
-    addMessage('I’m unable to retrieve an answer right now. Please request a conversation and the A4O team will follow up.', 'bot', { handoff: true });
+    await addTypedBotMessage('I’m unable to retrieve an answer right now. Please use the scheduling or contact option and the A4O team will follow up.', { handoff: true });
   } finally {
     input.disabled = false;
     input.focus();
