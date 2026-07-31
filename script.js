@@ -23,3 +23,67 @@ dialog.addEventListener('click', event => {
   if (event.target === dialog) dialog.close();
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+/*
+  TESTIMONIAL CAROUSEL — MANUAL EDITING
+  Change 6500 to the desired number of milliseconds between slides.
+  Examples: 5000 = 5 seconds, 8000 = 8 seconds.
+*/
+const TESTIMONIAL_INTERVAL_MS = 6500;
+const testimonialCarousel = document.querySelector('.testimonial-carousel');
+
+if (testimonialCarousel) {
+  const slides = [...testimonialCarousel.querySelectorAll('.testimonial-slide')];
+  const dots = [...testimonialCarousel.querySelectorAll('.testimonial-dot')];
+  const previousButton = testimonialCarousel.querySelector('.testimonial-prev');
+  const nextButton = testimonialCarousel.querySelector('.testimonial-next');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let currentSlide = 0;
+  let rotationTimer;
+
+  // Shows one slide and keeps the accessibility state and progress buttons in sync.
+  const showSlide = index => {
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === currentSlide;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+    });
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === currentSlide;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-current', String(active));
+    });
+  };
+
+  const stopRotation = () => window.clearInterval(rotationTimer);
+  const startRotation = () => {
+    stopRotation();
+    if (!reduceMotion) {
+      rotationTimer = window.setInterval(() => showSlide(currentSlide + 1), TESTIMONIAL_INTERVAL_MS);
+    }
+  };
+
+  previousButton.addEventListener('click', () => {
+    showSlide(currentSlide - 1);
+    startRotation();
+  });
+  nextButton.addEventListener('click', () => {
+    showSlide(currentSlide + 1);
+    startRotation();
+  });
+  dots.forEach((dot, index) => dot.addEventListener('click', () => {
+    showSlide(index);
+    startRotation();
+  }));
+
+  // Pauses while someone reads or uses the controls.
+  testimonialCarousel.addEventListener('mouseenter', stopRotation);
+  testimonialCarousel.addEventListener('mouseleave', startRotation);
+  testimonialCarousel.addEventListener('focusin', stopRotation);
+  testimonialCarousel.addEventListener('focusout', startRotation);
+
+  showSlide(0);
+  startRotation();
+}
+
