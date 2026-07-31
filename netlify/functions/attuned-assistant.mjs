@@ -1,4 +1,3 @@
-
 /*
   ATTUNED ASSISTANT — SECURE SERVER FUNCTION
   ==========================================
@@ -12,7 +11,9 @@
 
 import { readFile } from 'node:fs/promises';
 
-const KNOWLEDGE_URL = new URL('../../knowledge/attuned-assistant.md', import.meta.url);
+// Netlify bundles this function into /var/task while preserving the explicitly
+// included knowledge file at the project-relative path below.
+const KNOWLEDGE_PATH = 'knowledge/attuned-assistant.md';
 const APPROVED_DOMAINS = ['att4opt.com', 'quantup.ai', 'gammasoft.pl'];
 const ALLOWED_ORIGINS = [
   'https://att4opt.com',
@@ -114,7 +115,7 @@ export const handler = async event => {
   }
 
   try {
-    const knowledge = await readFile(KNOWLEDGE_URL, 'utf8');
+    const knowledge = await readFile(KNOWLEDGE_PATH, 'utf8');
     const input = [
       ...cleanHistory(payload.history),
       { role: 'user', content: message }
@@ -216,3 +217,9 @@ ${knowledge}`,
   }
 };
 
+[31;1mnode: [0m
+[31;1m[36;1mLine |[0m
+[31;1m[36;1m[36;1m   2 | [0m [36;1mnode[0m --check 'C:\Users\johnk\Documents\Codex\2026-07-31\sites-deploy- …[0m
+[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m ~~~~[0m
+[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mThe term 'node' is not recognized as a name of a cmdlet, function, script file, or executable program.[0m
+[31;1m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.[0m
