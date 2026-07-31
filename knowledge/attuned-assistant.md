@@ -76,7 +76,9 @@ Supporting partner pages:
 
 ## Industrial AI applications
 
-A4O and its specialist partners help organizations apply AI to industrial and operational environments. Examples include computer vision, predictive quality, equipment intelligence, anomaly detection, optimization, energy management, connected operations, and AI-enabled workflows.
+A4O and its specialist partners help organizations apply AI to industrial and operational environments. Capabilities include AI-driven image and video analysis, computer vision and machine vision, automated visual inspection, object and defect detection, image classification, predictive quality, equipment intelligence, anomaly detection, optimization, energy management, connected operations, and AI-enabled workflows.
+
+Typical applications include analyzing production-line or inspection-camera imagery, detecting and classifying defects, assessing product quality, monitoring infrastructure and equipment condition, identifying visual anomalies, and integrating results into operational workflows and decision support.
 
 A4O frames the business outcome, governance, program, workforce impact, and adoption plan. Specialist partners develop and integrate the technical solution.
 
