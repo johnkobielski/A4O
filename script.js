@@ -55,40 +55,6 @@ if (dialog) {
 }
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-// COOKIE CONSENT
-// Keep the notice dismissed for one year after a visitor accepts it.
-const cookieConsent = document.querySelector('#cookie-consent');
-const cookieConsentButton = cookieConsent?.querySelector('.cookie-consent-accept');
-const COOKIE_CONSENT_NAME = 'a4o_cookie_consent';
-const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 365;
-
-const hasCookieConsent = () => {
-  const cookieAccepted = document.cookie
-    .split(';')
-    .some(cookie => cookie.trim() === `${COOKIE_CONSENT_NAME}=accepted`);
-  if (cookieAccepted) return true;
-
-  try {
-    return window.localStorage.getItem(COOKIE_CONSENT_NAME) === 'accepted';
-  } catch {
-    return false;
-  }
-};
-
-if (cookieConsent && cookieConsentButton && !hasCookieConsent()) {
-  cookieConsent.hidden = false;
-
-  cookieConsentButton.addEventListener('click', () => {
-    document.cookie = `${COOKIE_CONSENT_NAME}=accepted; Max-Age=${COOKIE_CONSENT_MAX_AGE}; Path=/; SameSite=Lax; Secure`;
-    try {
-      window.localStorage.setItem(COOKIE_CONSENT_NAME, 'accepted');
-    } catch {
-      // The consent cookie remains the source of truth when storage is unavailable.
-    }
-    cookieConsent.hidden = true;
-  });
-}
-
 /*
   TESTIMONIAL CAROUSEL — MANUAL EDITING
   Change 6500 to the desired number of milliseconds between slides.
